@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>타임리프 문법 테스트</h1>
+	<p th:text="${user.id}">유저ID</p>
+	<p th:text="${user.name}">유저이름</p>
+
+	<div th:object="${user}"> <!-- 상위에서 데이터 선택하면.. -->
+		<p th:text="*{id}">ID</p>
+		<p th:text="*{name}">Username</p>
+	</div>
+
+	<!-- 현재 링크가 아니라 컨텍스트 URL을 만들 수 있게 한다 -->
+	<a th:href="@{/user/{id}(id=${user.id})}">유저 링크</a>
+
+	<p th:if="${user.age >= 18}">성인입니다</p> <!-- 조건이 달성되었을 때 -->
+	<p th:unless="${user.age >= 18}">미성년자입니다</p>
+	<!--  조건이 달성되지 않았을 때 -->
+
+	<div th:switch="${user.role}">
+		<p th:case="'admin'">관리자</p>
+		<p th:case="'user'">사용자</p>
+		<p th:case="*">해당하는 등급 없음</p>
+	</div>
+
+	<form method="post">
+		이름 : <input name="name">
+		나이 : <input name="age" type="number">
+		역할 : <input name="role">
+		<button>제출</button>
+
+
+	</form>
+	<p th:text="${#lists.isEmpty(users)}">유저가 없습니다</p>
+	<ul th:unless="${#lists.isEmpty(users)}">
+		<li th:each="user : ${users}" th:text="${user.name + '-' + user.age + '-' + user.role}">
+			유저 설명
+		</li>
+	</ul>
+	<p th:text="${#lists.size(users)}"></p>
+
+	<input th:attr="placeholder=${placeholderText}" th:value="${user.name}"/>
+	
+	<h1>인라인 표현식</h1>
+	<p>안녕하세요 (이스케이프 된 상태) [[${user.name}]]</p>
+	<p>안녕하세요 (이스케이프 X) [(${user.name})]</p>
+
+	
+	<p>안녕하세요 (이스케이프 된 상태) [[${tag}]]</p>
+	<p>안녕하세요 (이스케이프 X) [(${tag})]</p>
+	
+	
+	<h1>유틸리티 객체</h1>
+	<p th:text="${#lists.isEmpty(users)}"></p>
+
+</body>
+
+</html>
+<!--html 주석-->
+<!--/* 이렇게 작성하면 타임리프 처리시에 지워주는 주석임*/-->

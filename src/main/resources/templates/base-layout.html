@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.uz/thmeleaf/layout">
+
+<head>
+	<title th:text="${layoutTitle} + '-  ' + ${contentTitle}">
+		Layout Title
+	</title>
+</head>
+
+<body>
+	
+	<div th:replace="fragments/header :: pageHeader"></div>
+	
+	
+	<main layout:fragment="content">
+		<!-- 실제 페이지에서 사용할 부분-->
+	</main>
+	
+	
+	<div th:replace="fragments/header :: pageHeader"></div>
+</body>
+
+</html>
