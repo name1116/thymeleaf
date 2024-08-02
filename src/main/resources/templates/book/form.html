@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Add new book</title>
+</head>
+
+<body>
+	<h1>Add new book</h1>
+
+	<form th:action="@{/books/new}" method="post" th:object="${book}">
+		<div>
+			<label for="title">Title : </label>
+			<input id="title" th:field="*{title}" required>
+		</div>
+		<div>
+			<label for="author">Author : </label>
+			<input id="author" th:field="*{author}" required>
+		</div>
+		<div>
+			<label for="isbn">Isbn : </label>
+			<input id="isbn" th:field="*{isbn}" required>
+		</div>
+		<div>
+			<label for="publicationYear">publicationYear : </label>
+			<input id="publicationYear" type="number" th:field="*{publicationYear}" required>
+		</div>
+		<button>제출</button>
+	</form>
+
+	<a th:href="@{/books}"> 돌아가기</a>
+
+
+</body>
+
+</html>

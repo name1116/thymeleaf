@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Details</title>
+</head>
+<body>
+    <h1>Book Details</h1>
+    <dl>
+        <dt>ID:</dt>
+        <dd th:text="${book.id}">1</dd>
+        <dt>Title:</dt>
+        <dd th:text="${book.title}">Sample Title</dd>
+        <dt>Author:</dt>
+        <dd th:text="${book.author}">Sample Author</dd>
+        <dt>ISBN:</dt>
+        <dd th:text="${book.isbn}">Sample ISBN</dd>
+        <dt>Publication Year:</dt>
+        <dd th:text="${book.publicationYear}">2023</dd>
+    </dl>
+    <a th:href="@{/books}">Back to List</a>
+</body>
+</html>
